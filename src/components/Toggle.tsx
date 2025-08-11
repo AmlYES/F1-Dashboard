@@ -2,6 +2,8 @@ import "../styles.css";
 import { useViewContext } from "../hooks/ViewContextHook";
 
 export default function Toggle() {
+    // Access the context to get the current view state and functions
+    // isList: boolean, listView: function, gridView: function
     const {isList, listView, gridView} = useViewContext();
    
   return (

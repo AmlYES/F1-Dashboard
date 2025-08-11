@@ -19,6 +19,7 @@ export default function RaceList({ races }: RacesListProps) {
   const [pinned, setPinned] = useState<Set<string>>(new Set());
   const { isList } = useViewContext();
 
+  // Save pinned to localStorage
   const save = (newPinned: Set<string>) => {
     localStorage.setItem(STORAGE_KEY_PINNED, JSON.stringify(Array.from(newPinned)));
   }
@@ -31,6 +32,7 @@ export default function RaceList({ races }: RacesListProps) {
       console.error("Failed");
     }
   }, []);
+
 
   const pin = (id: string) => {
     setPinned((prev) => {

@@ -9,6 +9,7 @@ type SeasonsListProps = {
 
 export default function SeasonsList({ seasons }: SeasonsListProps) {
 
+  // Use the context to determine if the view is list or grid
   const { isList } = useViewContext();
 
   return (
