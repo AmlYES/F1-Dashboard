@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useMemo } from "react";
-import type { Race } from "../pages/Races";
+import { useState, useEffect, useMemo } from "react";
+
 import { formatISODate } from "../utils/date";
 import { Link } from "react-router";
 import "../styles.css";
 import { TiPin, TiPinOutline } from "react-icons/ti";
 import { useViewContext } from "../hooks/ViewContextHook";
-
+import type { Race } from "../Types/Race";
+import { sortpinned } from "../utils/sort";
 
 type RacesListProps = {
   races: Race[];
@@ -49,10 +50,9 @@ export default function RaceList({ races }: RacesListProps) {
     });
   };
 
+  
   const sorted = useMemo(() => {
-      return races.sort((a) => 
-        pinned.has(a.season + "-" + a.round) ? -1 : 1
-      )
+      return sortpinned(races, pinned);
   }, [races, pinned]);
 
   return (

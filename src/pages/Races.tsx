@@ -6,16 +6,8 @@ import Pagination from "../components/Pagination";
 import Toggle from "../components/Toggle";
 import "../styles.css";
 import logoUrl from "../assets/logo.png";
+import type { Race } from "../Types/Race";
 
-export type Race = {
-  raceName: string;
-  Circuit: {
-    circuitName: string;
-  };
-  date: string;
-  round: string;
-  season: string;
-};
 
 type RacesResponse = {
   MRData: {
