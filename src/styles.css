@@ -1,0 +1,170 @@
+/* ========== F1 Brand Base ========== */
+:root{
+  --f1-red: #E10600;
+  --f1-black: #0B0B0B;
+  --f1-black-2: #111111;
+  --f1-silver: #C9C9C9;
+  --f1-white: #FFFFFF;
+
+  --bg: var(--f1-black);
+  --surface: #141414;
+  --surface-2: #1A1A1A;
+  --text: #EDEDED;
+  --muted: #B8B8B8;
+
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,.35);
+  --shadow-red: 0 8px 24px rgba(225, 6, 0, 0.35);
+}
+
+/* Global */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  font-family: "Titillium Web", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ========== Layout & Header ========== */
+.f1-header{
+  position: sticky; top: 0; z-index: 10;
+  background: linear-gradient(135deg, var(--f1-red) 0%, #740300 45%, var(--f1-black) 100%);
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 16px; justify-content: space-between;
+  box-shadow: var(--shadow-red);
+}
+.f1-brand{
+  display: flex; align-items: center; gap: 12px;
+}
+.f1-logo{
+  display: block;
+  width: 150px; height: 150px;
+}
+.f1-title{
+  letter-spacing: .08em;
+  font-weight: 900; text-transform: uppercase; margin: 0;
+}
+.f1-subtitle{
+  letter-spacing: .08em;
+  font-weight: 900; text-transform: uppercase; margin: 0;
+  font-size: 50px;
+  text-align: center;
+}
+.f1-badge{
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 6px 10px; border-radius: 999px;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* Page container */
+.container{ max-width: 80vw; margin: 24px auto; padding: 0 16px; }
+.result-container{
+  max-width: 90vw; margin: 24px auto; padding: 0 16px;
+}
+
+/* Section heading */
+.h-section{
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 800;
+  margin: 24px 0 12px;
+  align-items: center;
+}
+
+/* ========== Buttons ========== */
+.btn{
+  appearance: none; border: none; outline: none; cursor: pointer;
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin: 10px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+.btn-primary{
+  background: var(--f1-red); color: var(--f1-white);
+}
+.btn-primary:hover{ transform: translateY(-1px); }
+.btn-primary:active{ transform: translateY(0); }
+
+.btn-ghost{
+  background: transparent; color: var(--text);
+  border: 1px solid #2A2A2A;
+}
+.btn-ghost:hover{ background: #1b1b1b; }
+
+.icon{
+  width: 20px; height: 20px;
+}
+
+
+
+/* Toggle (list/cards) */
+.toggle{
+  display:inline-flex; background: var(--surface); border:1px solid #2a2a2a; border-radius: 999px; overflow:hidden;
+}
+.toggle button{
+  padding: 8px 12px; color: var(--muted); background: transparent; border:0; cursor:pointer;
+}
+.toggle button[aria-active="true"]{ color: var(--f1-white); background:#202020; }
+
+/* ========== Cards & Lists ========== */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.visualization{
+   grid-column: span 2; 
+}
+
+.card{
+  background: var(--surface);
+  border: 1px solid #222; border-radius: var(--radius);
+  padding: 14px; box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  position: relative; overflow: hidden;
+  margin: 10px;
+}
+.card:hover{  cursor: pointer; transform: translateY(-2px); border-color:#333; box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+
+/* Racing stripe accent */
+.card::before{
+  content: ""; position: absolute; inset: -40px -40px auto auto; height: 10px; width: 140px;
+  background: linear-gradient(90deg, var(--f1-red) 0 50%, transparent 50% 100%);
+  transform: rotate(35deg);
+  opacity: .6; pointer-events: none;
+}
+
+/* Item meta */
+.item-title{ font-weight: 500; margin: 0 0 4px; color: var(--f1-silver);}
+.item-sub{ color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+.item-row{ display:flex; align-items:center; gap:8px; font-size:13px; color: var(--muted); }
+
+/* Badge */
+.badge{
+  display:inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px;
+  background:#1f1f1f; border:1px solid #2b2b2b; color: var(--muted);
+}
+.badge-red{ background: rgba(225,6,0,.1); border-color: rgba(225,6,0,.35); color:#ffb3af; }
+
+/* Links */
+.link{
+  color: var(--text); text-decoration: none; border-bottom: 1px solid transparent;
+}
+.link:hover .link-text{ border-bottom: 1px solid var(--f1-red); }
+
+/* Utility */
+.row{ display:flex; align-items:center; gap:12px; }
+.space-between{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.center{ display:flex; align-items:center; justify-content:center; }
+.season-center{ display:flex; align-items:center; justify-content:center; gap:8px; }
+
+
+.mt-16{ margin-top: 16px; }
+.mt-24{ margin-top: 24px; }
