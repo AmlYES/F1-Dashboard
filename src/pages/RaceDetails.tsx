@@ -54,11 +54,13 @@ export default function RaceDetails() {
                 ...result.Time,
                 time: prettyMs(Number(result.Time.millis)),
               }
-            : undefined,
+             : (result.status.includes('+'))?{ time:result.status, millis:''} :{time: "DNF", millis: ''}
         }))
       );
     });
   }, [season, round]);
+
+  console.log("Results:", results);
 
   return (
     <div>
@@ -79,7 +81,7 @@ export default function RaceDetails() {
         <div className="grid">
           <ResultList results={results} />
           <div className="visualization">
-            <PerformanceVisualization />
+            <PerformanceVisualization results={results} />
           </div>
         </div>
         }
